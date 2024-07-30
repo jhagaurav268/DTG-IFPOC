@@ -1,0 +1,201 @@
+<template>
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__body">
+                    <h2 class="slds-card__header-title">
+                        <!-- <a href="#" class="slds-card__header-link slds-truncate" title="Projects in Review"> -->
+                        <span style="color: #476fa7; font-weight: bold; font-size: 35px;">Projects in Review</span>
+                        <!-- </a> -->
+                    </h2>
+                </div>
+                <!-- <div class="slds-no-flex">
+                    <button class="slds-button slds-button_neutral">New</button>
+                </div> -->
+            </header>
+        </div>
+        <div class="slds-card__body slds-card__body_inner slds-m-top_large">
+
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_2-of-3">
+                    <span>
+                        <template if:true={isGoAdminUser}>
+                            <div class="slds-grid slds-gutters">
+                                <!-- <div class="">
+                                <span>
+                                    <lightning-button variant="brand" label="Innovation Project"
+                                        name="innovationProject" title="Innovation Project" onclick={handleButtonClick}
+                                        icon-name="utility:add" class="slds-p-around_xxx-small buttonCustomization">
+                                    </lightning-button>
+                                </span>
+                            </div>
+                            <div class="">
+                                <span>
+                                    <lightning-button variant="brand" label="Opportunities Project"
+                                        name="opportunitiesProject" title="Opportunities Project"
+                                        onclick={handleButtonClick} icon-name="utility:add"
+                                        class="slds-p-around_xxx-small buttonCustomization">
+                                    </lightning-button>
+                                </span>
+                            </div> -->
+                                <div class="">
+                                    <span>
+                                        <lightning-button variant="brand" label="Meeting Document"
+                                            title="Meeting Document" name="meetingDocument" onclick={handleButtonClick}
+                                            icon-name="utility:add" class="slds-p-around_xxx-small buttonCustomization">
+                                        </lightning-button>
+                                    </span>
+                                </div>
+                                <div class="">
+                                    <span>
+                                        <lightning-button variant="brand" label="Reviewer Resource"
+                                            name="reviewerResource" title="Reviewer Resource"
+                                            onclick={handleButtonClick} icon-name="utility:add"
+                                            class="slds-p-around_xxx-small buttonCustomization">
+                                        </lightning-button>
+                                    </span>
+                                </div>
+                            </div>
+                        </template>
+
+                        <div class="slds-m-top_x-large">
+                            <span style="color: #476fa7; font-weight: bold; font-size: 20px;">Projects For Your
+                                Review</span>
+                            <div class="slds-m-top_large slds-m-bottom_large">
+
+                                <lightning-datatable key-field="ProjectNumber" data={projectForReviewData}
+                                    columns={projectInReviewColumns} onrowaction={projectForReviewData}
+                                    hide-checkbox-column>
+                                </lightning-datatable>
+                            </div>
+                        </div>
+
+                        <div class="slds-m-top_x-large">
+                            <span style="color: #476fa7; font-weight: bold; font-size: 20px;">Project Reviews You can
+                                Access</span>
+                            <div class="slds-grid slds-gutters slds-m-top_large slds-m-bottom_large">
+                                <div class="slds-m-left_medium">
+                                    <span>
+                                        <lightning-input variant="label-hidden" type="text" placeholder="Search"
+                                            onchange={handleProjectReviewChange}></lightning-input>
+                                    </span>
+                                </div>
+                                <div class="slds-m-left_medium">
+                                    <span>
+                                        <lightning-combobox name="status" label="Status" value={statusChangeValue}
+                                            placeholder="Status" options={reviewSummaryStatusOptions}
+                                            onchange={handleProjectReviewChange}
+                                            variant="label-hidden"></lightning-combobox>
+                                    </span>
+                                </div>
+                                <div class="slds-m-left_medium">
+                                    <span>
+                                        <lightning-combobox name="projectCode" label="Project Code"
+                                            value={anyCompetitionChangeValue} placeholder="Any Competition"
+                                            options={options} onchange={handleProjectReviewChange}
+                                            variant="label-hidden"></lightning-combobox>
+                                    </span>
+                                </div>
+                                <div class="slds-m-left_medium">
+                                    <span>
+                                        <lightning-combobox name="go" label="GO" value={goCompetitionChangeValue}
+                                            placeholder="GO" options={options} onchange={handleProjectReviewChange}
+                                            variant="label-hidden"></lightning-combobox>
+                                    </span>
+                                </div>
+                            </div>
+                            <lightning-datatable key-field="id" data={projectReviewSummaryData} columns={projectColumns}
+                                hide-checkbox-column>
+                            </lightning-datatable>
+                        </div>
+
+                        <div class="slds-m-top_x-large">
+                            <span style="color: #476fa7; font-weight: bold; font-size: 20px;">All Projects</span>
+                            <div class="slds-grid slds-gutters slds-m-top_large slds-m-bottom_large">
+                                <div class="slds-m-left_medium">
+                                    <span>
+                                        <lightning-input variant="label-hidden" type="text" placeholder="Search"
+                                            onchange={handleProjectReviewChange}></lightning-input>
+                                    </span>
+                                </div>
+                                <div class="slds-m-left_medium">
+                                    <span>
+                                        <lightning-combobox name="status" label="Status" value={statusChangeValue}
+                                            placeholder="Select Status" options={individualApplicationStatusOptions}
+                                            onchange={handleProjectReviewChange}
+                                            variant="label-hidden"></lightning-combobox>
+                                    </span>
+                                </div>
+                                <div class="slds-m-left_medium">
+                                    <span>
+                                        <lightning-combobox name="projectCode" label="Project Code"
+                                            value={anyCompetitionChangeValue} placeholder="Any Competition"
+                                            options={options} onchange={handleProjectReviewChange}
+                                            variant="label-hidden"></lightning-combobox>
+                                    </span>
+                                </div>
+                                <div class="slds-m-left_medium">
+                                    <span>
+                                        <lightning-combobox name="go" label="GO" value={goCompetitionChangeValue}
+                                            placeholder="GO" options={options} onchange={handleProjectReviewChange}
+                                            variant="label-hidden"></lightning-combobox>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <lightning-datatable key-field="ProjectNumber" data={projectRecordData}
+                                columns={projectColumns} onrowaction={handleRowAction} hide-checkbox-column>
+                            </lightning-datatable>
+                        </div>
+
+                    </span>
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <span>
+                        <div style="background-color: rgb(249, 248, 248);" class="slds-m-top_x-large">
+                            <div style="padding: 5%;">
+                                <p style="color: #476fa7; font-weight: bold; font-size: 15px;">Meeting Documents</p>
+                                <a href="#" class="slds-truncate" title="AGENDA-Innovation Fund Reports">
+                                    <span
+                                        style="color: #476fa7;">AGENDA-InnovationFundReportsMeeting-March29,2023.pdf</span>
+                                </a>
+                            </div>
+                            <div style="padding: 5%;">
+                                <p style="color: #476fa7; font-weight: bold; font-size: 15px;">Reviewer Resource</p>
+                                <a href="#" class="slds-truncate" title="AGENDA-Innovation Fund Reports">
+                                    <span style="color: #476fa7;">APPROVEDJohnSangsterAwardTOR.pdf</span>
+                                </a><br />
+                                <a href="#" class="slds-truncate" title="AGENDA-Innovation Fund Reports">
+                                    <span style="color: #476fa7;">InnovationReportReviewGuide.pdf</span>
+                                </a><br />
+                                <a href="#" class="slds-truncate" title="AGENDA-Innovation Fund Reports">
+                                    <span
+                                        style="color: #476fa7;">AMOSOFundingCompetitionConflictOfInterestPolicy.pdf</span>
+                                </a><br />
+                            </div>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <footer class="slds-card__footer">
+            <!-- <a class="slds-card__footer-action" href="#">View All
+                <span class="slds-assistive-text">Accounts</span>
+            </a> -->
+        </footer>
+
+        <template if:true={isShowInnovationProject}>
+            <c-project-in-review-modal onclosemodal={hideModalBox}></c-project-in-review-modal>
+        </template>
+
+        <template if:true={isShowMeetingDocument}>
+            <c-meeting-document-modal modal-name={modalName} show-conflict={showConflict}
+                onclosemodal={hideModalBox}></c-meeting-document-modal>
+        </template>
+
+        <template if:true={isShowReviewPane}>
+            <c-review-pane selected-data={selectedReviewProjectRows} onclosemodal={hideModalBox}></c-review-pane>
+        </template>
+
+    </article>
+</template>

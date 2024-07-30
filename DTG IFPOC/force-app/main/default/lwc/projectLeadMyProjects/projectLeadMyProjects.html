@@ -1,0 +1,66 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner variant="brand"></lightning-spinner>
+    </template>
+    <!-- <template if:false={isProjectLeadUser}>
+        <p>You do not have sufficient access</p>
+    </template> -->
+    <!-- <template if:true={isProjectLeadUser}> -->
+    <template if:false={isSubmitGrantReport}>
+        <article class="slds-card">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__body">
+                        <!-- <div class="button-container">
+                            <button class="gradient-button" onclick={submitGrantReport}>Submit Grant Report</button>
+                        </div> -->
+                        <div style="background-color: #496584; border-radius: 10px;">
+                            <h2 class="slds-card__header-title">
+                                <span style="color: #fff; font-weight: bold; font-size: 25px;"
+                                    class="slds-p-around_x-small">My
+                                    Projects</span>
+                            </h2>
+                        </div>
+
+                    </div>
+                </header>
+            </div>
+            <div class="slds-card__body slds-card__body_inner slds-m-top_large">
+                <div class="slds-m-top_x-large">
+                    <span style="color: #496584; font-weight: bold; font-size: 20px;">Applications Under Review</span>
+                    <div class="slds-m-top_medium">
+                        <span style="color: #496584; font-weight: bold; font-size: 15px;">{richTextContent}</span>
+                    </div>
+                    <div class="slds-m-top_medium">
+                        <div class="myTable">
+                            <lightning-datatable key-field="Name" data={filteredAllProjectData}
+                                columns={allProjectColumns} onrowaction={handleRowAction} hide-checkbox-column>
+                            </lightning-datatable>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-m-top_x-large">
+                    <span style="color: #496584; font-weight: bold; font-size: 20px;">All Funded Projects</span>
+                    <div class="slds-m-top_medium">
+                        <div class="myTable">
+                            <lightning-datatable key-field="Name" data={allFundedProjectsData}
+                                columns={allFundedProjectColumns} onrowaction={handleRowAction} hide-checkbox-column>
+                            </lightning-datatable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="slds-card__footer">
+
+            </footer>
+        </article>
+    </template>
+
+    <template if:true={isSubmitGrantReport}>
+        <!-- <lightning-card title="Submit Grant Report">
+            <lightning-flow flow-api-name='ProjectReporting_SF_Submit_Your_Report_PLs_GOs'>
+            </lightning-flow>
+        </lightning-card> -->
+    </template>
+    <!-- </template> -->
+</template>

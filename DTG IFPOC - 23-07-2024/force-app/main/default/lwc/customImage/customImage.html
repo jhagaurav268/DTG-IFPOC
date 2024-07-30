@@ -1,0 +1,10 @@
+<template>
+    <img alt="" lwc:if={isImg} src={resUrl} />
+    <video lwc:if={isVideo} autoplay muted loop>
+        <source src={resUrl} type="video/mp4" />
+    </video>
+    <div lwc:if={isOverlay}></div>
+    <div>
+        <lightning-formatted-rich-text value={richTextContent}></lightning-formatted-rich-text>
+    </div>
+</template>

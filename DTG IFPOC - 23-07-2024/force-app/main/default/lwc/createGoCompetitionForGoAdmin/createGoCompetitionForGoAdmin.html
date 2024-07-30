@@ -1,0 +1,82 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner variant="brand"></lightning-spinner>
+    </template>
+    <lightning-card title="Record Detail" icon-name="standard:record">
+        <div class="slds-p-around_large">
+            <lightning-combobox label="Status" options={statusOptions} onchange={handleInputChange} data-id="Status">
+            </lightning-combobox>
+
+            <lightning-input type="date" label="Application Start Date" onchange={handleInputChange}
+                data-id="Application_Start_Date__c">
+            </lightning-input>
+
+            <lightning-input type="date" label="Application End Date" onchange={handleInputChange}
+                data-id="Application_Due_Date__c">
+            </lightning-input>
+
+            <lightning-input type="date" label="GO Annual Report Due Date" onchange={handleInputChange}
+                data-id="GO_Annual_Report_Due_Date__c">
+            </lightning-input>
+
+            <lightning-input type="date" label="GO Final Report Due Date" onchange={handleInputChange}
+                data-id="GO_Final_Report_Due_Date__c">
+            </lightning-input>
+
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="rich-text-1">
+                    Innovation Fund Competition Overview
+                </label>
+                <div class="slds-form-element__control">
+                    <lightning-input-rich-text onchange={handleInputChange} data-id="Innovation_Fund_Competition_Overview__c" id="rich-text-1">
+                    </lightning-input-rich-text>
+                </div>
+            </div>
+
+
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="rich-text-4">
+                    Timelines
+                </label>
+                <div class="slds-form-element__control">
+                    <lightning-input-rich-text onchange={handleInputChange} data-id="Timelines__c" id="rich-text-4">
+                    </lightning-input-rich-text>
+                </div>
+            </div>
+
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="rich-text-2">
+                    Process for Application
+                </label>
+                <div class="slds-form-element__control">
+                    <lightning-input-rich-text onchange={handleInputChange} data-id="Process_for_Application__c" id="rich-text-2">
+                    </lightning-input-rich-text>
+                </div>
+            </div>
+
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="rich-text-3">
+                    Highlights of Important Guidelines
+                </label>
+                <div class="slds-form-element__control">
+                    <lightning-input-rich-text onchange={handleInputChange} data-id="Highlights_of_Important_Guidelines__c" id="rich-text-3">
+                    </lightning-input-rich-text>
+                </div>
+            </div>
+
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="rich-text-5">
+                    Key Information
+                </label>
+                <div class="slds-form-element__control">
+                    <lightning-input-rich-text onchange={handleInputChange} data-id="Key_Information__c" id="rich-text-5">
+                    </lightning-input-rich-text>
+                </div>
+            </div>
+
+            <div class="slds-col slds-size_1-of-1 slds-m-top_medium">
+                <lightning-button label="Save" onclick={handleSave}></lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

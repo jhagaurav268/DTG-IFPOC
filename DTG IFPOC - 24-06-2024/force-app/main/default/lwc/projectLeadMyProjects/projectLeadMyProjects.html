@@ -1,0 +1,46 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner variant="brand"></lightning-spinner>
+    </template>
+    <template if:false={isProjectLeadUser}>
+        <p>You do not have sufficient access</p>
+    </template>
+    <template if:true={isProjectLeadUser}>
+        <article class="slds-card">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__body">
+                        <h2 class="slds-card__header-title">
+                            <span style="color: #476fa7; font-weight: bold; font-size: 35px;">My Projects</span>
+                        </h2>
+                    </div>
+                </header>
+            </div>
+            <div class="slds-card__body slds-card__body_inner slds-m-top_large">
+                <div class="slds-m-top_x-large">
+                    <span style="color: #476fa7; font-weight: bold; font-size: 20px;">Applications Under Review</span>
+                    <div class="slds-m-top_medium">
+                        <div class="myTable">
+                            <lightning-datatable key-field="Name" data={filteredAllProjectData}
+                                columns={allProjectColumns} onrowaction={handleRowAction} hide-checkbox-column>
+                            </lightning-datatable>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-m-top_x-large">
+                    <span style="color: #476fa7; font-weight: bold; font-size: 20px;">All Funded Projects</span>
+                    <div class="slds-m-top_medium">
+                        <div class="myTable">
+                            <lightning-datatable key-field="Name" data={allFundedProjectsData}
+                                columns={allFundedProjectColumns} onrowaction={handleRowAction} hide-checkbox-column>
+                            </lightning-datatable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="slds-card__footer">
+
+            </footer>
+        </article>
+    </template>
+</template>

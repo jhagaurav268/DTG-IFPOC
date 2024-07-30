@@ -1,0 +1,88 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner variant="brand"></lightning-spinner>
+    </template>
+    <article class="slds-card">
+        <!-- <template if:false={isRecordDatailPage}> -->
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__body" style="background-color: #496584; border-radius: 10px;">
+                        <h2 class="slds-card__header-title">
+                            <span style="color: #fff; font-weight: bold; font-size: 25px;"
+                                class="slds-p-around_x-small">Competitions</span>
+                        </h2>
+                    </div>
+                </header>
+            </div>
+            <div class="slds-card__body slds-card__body_inner slds-m-top_large">
+                <span>
+                    <div class="slds-m-top_x-large">
+                        <span style="color: #496584; font-weight: bold; font-size: 20px;">All IF Competition</span>
+                        <div class="slds-grid slds-gutters slds-m-top_large slds-m-bottom_large">
+                            <div class="slds-m-left_medium">
+                                <span>
+                                    <lightning-input name="ifCompetitionSearch" variant="label-hidden" type="text"
+                                        value={ifCompetitionSearchValue} placeholder="Search"
+                                        onchange={handleCompetitionChange}></lightning-input>
+                                </span>
+                            </div>
+                            <div class="slds-m-left_medium">
+                                <span>
+                                    <lightning-combobox name="ifFundingYear" label="Funding Year"
+                                        value={ifFundingYearValue} placeholder="Funding Year (All)"
+                                        options={ifFundingYearOptions} onchange={handleCompetitionChange}
+                                        variant="label-hidden"></lightning-combobox>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="myTable">
+                            <lightning-datatable key-field="Name" data={filteredIfCompetitionData}
+                                columns={allIfCompetitionColumns} onrowaction={handleRowAction} hide-checkbox-column>
+                            </lightning-datatable>
+                        </div>
+                    </div>
+
+                    <div class="slds-m-top_x-large">
+                        <span style="color: #496584; font-weight: bold; font-size: 20px;">GO Competitions</span>
+                        <div class="slds-grid slds-gutters slds-m-top_large slds-m-bottom_large">
+                            <div class="slds-m-left_medium">
+                                <span>
+                                    <lightning-input name="goCompetitionSearch" value={goCompetitionSearchValue}
+                                        variant="label-hidden" type="text" placeholder="Search"
+                                        onchange={handleCompetitionChange}></lightning-input>
+                                </span>
+                            </div>
+                            <div class="slds-m-left_medium">
+                                <span>
+                                    <lightning-combobox name="goFundingYear" label="Funding Year"
+                                        value={goFundingYearValue} placeholder="Funding Year (All)"
+                                        options={goFundingYearOptions} onchange={handleCompetitionChange}
+                                        variant="label-hidden"></lightning-combobox>
+                                </span>
+                            </div>
+                            <div class="slds-m-left_medium">
+                                <span>
+                                    <lightning-combobox name="goStatus" label="Status" value={goStatusValue}
+                                        placeholder="Status" options={goStatusOptions}
+                                        onchange={handleCompetitionChange} variant="label-hidden"></lightning-combobox>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="myTable">
+                            <lightning-datatable key-field="Name" data={filteredGoCompetitionData}
+                                columns={allGOCompetitionColumns} onrowaction={handleRowAction} hide-checkbox-column>
+                            </lightning-datatable>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        <!-- </template>
+        <template if:true={isRecordDatailPage}>
+            <c-competition-detail initial-record={currentRow} onbackclick={handleBackClick}></c-competition-detail>
+        </template> -->
+        <footer class="slds-card__footer">
+
+        </footer>
+    </article>
+</template>

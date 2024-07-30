@@ -1,0 +1,152 @@
+<template>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+        <div class="slds-modal__container">
+
+            <header class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+                    onclick={hideModalBox}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                        size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate" style="color: #476fa7;">
+                    Evaluation of a novel MRI protocol to measure ischemia in the cervical cord of DCM patients
+                </h2>
+            </header>
+
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-size_2-of-3">
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col">
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-p-horizontal_medium slds-size_1-of-4">
+                                        <p class="slds-text-title_bold">Project Number</p>
+                                    </div>
+                                    <div class="slds-p-horizontal_medium slds-size_1-of-4">
+                                        <p class="slds-text-title_bold">Project Status</p>
+                                    </div>
+                                    <div class="slds-p-horizontal_medium slds-size_1-of-4">
+                                        <p class="slds-text-title_bold">Review Deadline</p>
+                                    </div>
+                                    <div class="slds-p-horizontal_medium slds-size_1-of-4">
+                                        <p class="slds-text-title_bold">Project Lead(s)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-grid slds-gutters slds-m-bottom_large">
+                            <div class="slds-col">
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-p-horizontal_medium slds-size_1-of-4">
+                                        <p>{selectedData.ProjectNumber}</p>
+                                    </div>
+                                    <div class="slds-p-horizontal_medium slds-size_1-of-4">
+                                        <p>{selectedData.Status}</p>
+                                    </div>
+                                    <div class="slds-p-horizontal_medium slds-size_1-of-4">
+                                        <p>{selectedData.ReviewDeadline}</p>
+                                    </div>
+                                    <div class="slds-p-horizontal_medium slds-size_1-of-4">
+                                        <p>{selectedData.ProjectLead}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col">
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-p-horizontal_medium slds-size_1-of-4">
+                                        <p class="slds-text-title_bold">Lead AFP Practice Plan(s)</p>
+                                    </div>
+                                    <div class="slds-p-horizontal_medium slds-size_1-of-4">
+                                        <p class="slds-text-title_bold">Reviewer 1</p>
+                                    </div>
+                                    <div class="slds-p-horizontal_medium slds-size_1-of-4">
+                                        <p class="slds-text-title_bold">Reviewer 2</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-grid slds-gutters slds-m-bottom_large">
+                            <div class="slds-col">
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-p-horizontal_medium slds-size_1-of-4">
+                                        <p>CNS</p>
+                                    </div>
+                                    <div class="slds-p-horizontal_medium slds-size_1-of-4">
+                                        <p></p>
+                                    </div>
+                                    <div class="slds-p-horizontal_medium slds-size_1-of-4">
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="padding: 2%;">
+                            <lightning-input label="Score" type="text" onchange={handleInputChange}></lightning-input>
+                            <lightning-textarea name="comment" label="Comment" class="commentTextarea"
+                                onchange={handleInputChange}></lightning-textarea>
+                            <lightning-textarea name="budgetComment" label="Budget Comments" class="commentTextarea"
+                                onchange={handleInputChange}></lightning-textarea>
+                        </div>
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-3">
+                        <span>
+                            <div style="background-color: rgb(249, 248, 248);" class="slds-m-top_x-large">
+                                <div style="padding: 5%;">
+                                    <p class="slds-text-title_bold" style="color: #476fa7; font-size: 15px;">Proposal
+                                        Documents</p>
+                                    <a href="#" class="slds-truncate" title="Form P1-Proposal.pdf">
+                                        <span
+                                            style="color: #476fa7; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;">Form
+                                            P1-Proposal.pdf</span>
+                                    </a>
+                                    <a href="#" class="slds-truncate" title="Form P2-Budget.pdf">
+                                        <span
+                                            style="color: #476fa7; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;">Form
+                                            P2-Budget.pdf</span>
+                                    </a>
+                                    <a href="#" class="slds-truncate" title="CV.pdf">
+                                        <span
+                                            style="color: #476fa7; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;">CV.pdf</span>
+                                    </a>
+                                    <a href="#" class="slds-truncate"
+                                        title="AGENDA-InnovationFundReportsMeeting-March29,2023.pdf">
+                                        <span
+                                            style="color: #476fa7; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;">AGENDA-InnovationFundReportsMeeting-March29,2023.pdf</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+
+            <footer class="slds-modal__footer">
+                <div class="slds-float_right slds-m-around_medium slds-grid slds-gutters">
+                    <div class="">
+                        <span>
+                            <lightning-button variant="brand" label="Save" name="save" title="Save"
+                                onclick={handleButtonClick} class="slds-p-around_xxx-small">
+                            </lightning-button>
+                        </span>
+                    </div>
+                    <div class="">
+                        <span>
+                            <lightning-button variant="neutral" label="Cancel" name="cancel" title="Cancel"
+                                onclick={hideModalBox} class="slds-p-around_xxx-small">
+                            </lightning-button>
+                        </span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>

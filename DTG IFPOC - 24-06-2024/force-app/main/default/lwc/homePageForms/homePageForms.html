@@ -1,0 +1,23 @@
+<template>
+    <lightning-card>
+        <lightning-accordion class="example-accordion" onsectiontoggle={handleToggleSection}
+            active-section-name="basicDetails" allow-multiple-sections-open>
+            <template for:each={labelData} for:item="label">
+                <lightning-accordion-section key={label.id} name={label.formName} label={label.formlabel}>
+                    <div style="background-color: rgb(249, 248, 248); padding: 10px;">
+                        <lightning-formatted-rich-text value={label.formData}></lightning-formatted-rich-text>
+                        <div class="slds-m-top_medium slds-grid slds-gutters">
+                            <div class="slds-col">
+                                <template for:each={label.buttonList} for:item="button">
+                                    <button key={button.name} name={button.name}
+                                        style="margin-right: 5%;margin-top: 1%;" class="slds-button slds-button_brand"
+                                        title={button.label} onclick={handleFormButtonClick}>{button.label}</button>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </lightning-accordion-section>
+            </template>
+        </lightning-accordion>
+    </lightning-card>
+</template>

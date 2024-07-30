@@ -1,0 +1,164 @@
+<template>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+        aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+        <div class="slds-modal__container">
+
+            <header class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close"
+                    onclick={hideModalBox}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                        size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">New Project
+                </h2>
+            </header>
+
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <lightning-accordion class="example-accordion" onsectiontoggle={handleToggleSection}
+                    active-section-name="basicDetails" allow-multiple-sections-open>
+                    <lightning-accordion-section name="basicDetails" label="Basic Details">
+                        <div style="background-color: rgb(249, 248, 248); padding: 10px;">
+                            <div class="slds-size_2-of-3">
+                                <lightning-input label="Title" name="title" title="Title" type="text"
+                                    onchange={handleInputChange}></lightning-input>
+                                    
+                                <lightning-input label="Agenda Number" name="agendaNumber" title="Agenda Number"
+                                    type="text" onchange={handleInputChange}></lightning-input>
+
+                                <lightning-input label="Project Number" name="pprojectNumber" title="Project Number"
+                                    type="text" onchange={handleInputChange}></lightning-input>
+
+                                <lightning-combobox name="projectStatus" disabled="true" label="Project Status"
+                                    value={statusChangeValue} options={projectStatusOptions}
+                                    onchange={handleInputChange}></lightning-combobox>
+
+                                <lightning-input label="Review Deadline" name="reviewDeadline" title="Review Deadline"
+                                    type="date" onchange={handleInputChange}></lightning-input>
+
+                                <lightning-input label="Project Lead(s)" name="projectLead" title="Project Lead(s)"
+                                    type="text" onchange={handleInputChange}></lightning-input>
+
+                                <lightning-input label="Lead AFP Practice Plan(s)" name="leadAfpPractice"
+                                    title="Lead AFP Practice Plan(s)" type="text"
+                                    onchange={handleInputChange}></lightning-input>
+                            </div>
+                        </div>
+                    </lightning-accordion-section>
+
+                    <lightning-accordion-section name="proposalDocument" label="Proposal Document">
+                        <div style="background-color: rgb(249, 248, 248); padding: 10px;">
+
+                            <lightning-file-upload label="Add a new file" name="fileUploader" accept={acceptedFormats}
+                                record-id={myRecordId} onuploadfinished={handleUploadFinished} multiple>
+                            </lightning-file-upload>
+
+                            <p class="slds-m-top_x-small" style="color: rgb(118, 116, 116);">Unlimited number of files
+                                can be uploaded to this field. 100 MB limit.</p>
+                            <p class="slds-m-top_x-small" style="color: rgb(118, 116, 116);">Allowed types: doc docx
+                                html htm odt pdf xls xlsx ods ppt pptx txt rtf</p>
+
+                        </div>
+                    </lightning-accordion-section>
+
+                    <lightning-accordion-section name="yearOneReport" label="Year 1 Report">
+                        <div style="background-color: rgb(249, 248, 248); padding: 10px;">
+
+                            <lightning-file-upload label="Add a new file" name="fileUploader" accept={acceptedFormats}
+                                record-id={myRecordId} onuploadfinished={handleUploadFinished} multiple>
+                            </lightning-file-upload>
+
+                            <p class="slds-m-top_x-small" style="color: rgb(118, 116, 116);">Unlimited number of files
+                                can be uploaded to this field. 100 MB limit.</p>
+                            <p class="slds-m-top_x-small" style="color: rgb(118, 116, 116);">Allowed types: doc docx
+                                html htm odt pdf xls xlsx ods ppt pptx txt rtf</p>
+
+                        </div>
+                    </lightning-accordion-section>
+
+                    <lightning-accordion-section name="yearTwoReport" label="Year 2 Report">
+                        <div style="background-color: rgb(249, 248, 248); padding: 10px;">
+
+                            <lightning-file-upload label="Add a new file" name="fileUploader" accept={acceptedFormats}
+                                record-id={myRecordId} onuploadfinished={handleUploadFinished} multiple>
+                            </lightning-file-upload>
+
+                            <p class="slds-m-top_x-small" style="color: rgb(118, 116, 116);">Unlimited number of files
+                                can be uploaded to this field. 100 MB limit.</p>
+                            <p class="slds-m-top_x-small" style="color: rgb(118, 116, 116);">Allowed types: doc docx
+                                html htm odt pdf xls xlsx ods ppt pptx txt rtf</p>
+
+                        </div>
+                    </lightning-accordion-section>
+
+                    <lightning-accordion-section name="finalReport" label="Final Report">
+                        <div style="background-color: rgb(249, 248, 248); padding: 10px;">
+
+                            <lightning-file-upload label="Add a new file" name="fileUploader" accept={acceptedFormats}
+                                record-id={myRecordId} onuploadfinished={handleUploadFinished} multiple>
+                            </lightning-file-upload>
+
+                            <p class="slds-m-top_x-small" style="color: rgb(118, 116, 116);">Unlimited number of files
+                                can be uploaded to this field. 100 MB limit.</p>
+                            <p class="slds-m-top_x-small" style="color: rgb(118, 116, 116);">Allowed types: doc docx
+                                html htm odt pdf xls xlsx ods ppt pptx txt rtf</p>
+
+                        </div>
+                    </lightning-accordion-section>
+
+                    <lightning-accordion-section name="additionalDocuments" label="Additional Documents">
+                        <div style="background-color: rgb(249, 248, 248); padding: 10px;">
+
+                            <lightning-file-upload label="Add a new file" name="fileUploader" accept={acceptedFormats}
+                                record-id={myRecordId} onuploadfinished={handleUploadFinished} multiple>
+                            </lightning-file-upload>
+
+                            <p class="slds-m-top_x-small" style="color: rgb(118, 116, 116);">Unlimited number of files
+                                can be uploaded to this field. 100 MB limit.</p>
+                            <p class="slds-m-top_x-small" style="color: rgb(118, 116, 116);">Allowed types: doc docx
+                                html htm odt pdf xls xlsx ods ppt pptx txt rtf</p>
+
+                        </div>
+                    </lightning-accordion-section>
+
+                    <lightning-accordion-section name="reviewers" label="Reviewers">
+                        <div style="background-color: rgb(249, 248, 248); padding: 10px;">
+                            <div class="slds-size_2-of-3">
+                                <lightning-combobox name="reviewer" label="Reviewer 1" value={reviewerChangeValue}
+                                    options={reviewerOptions} onchange={handleInputChange}></lightning-combobox>
+                                <lightning-combobox name="reviewer" label="Reviewer 2" value={reviewerChangeValue}
+                                    options={reviewerOptions} onchange={handleInputChange}></lightning-combobox>
+                            </div>
+                        </div>
+                    </lightning-accordion-section>
+
+                    <lightning-accordion-section name="directConflicts" label="Direct Conflict">
+                        <!-- <div style="background-color: rgb(249, 248, 248); padding: 10px;">
+
+                        </div> -->
+                    </lightning-accordion-section>
+                </lightning-accordion>
+            </div>
+
+            <footer class="slds-modal__footer">
+                <div class="slds-float_right slds-m-around_medium slds-grid slds-gutters">
+                    <div class="">
+                        <span>
+                            <lightning-button variant="brand" label="Save" name="save" title="Save"
+                                onclick={handleButtonClick} class="slds-p-around_xxx-small">
+                            </lightning-button>
+                        </span>
+                    </div>
+                    <div class="">
+                        <span>
+                            <lightning-button variant="neutral" label="Cancel" name="cancel" title="Cancel"
+                                onclick={hideModalBox} class="slds-p-around_xxx-small">
+                            </lightning-button>
+                        </span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>

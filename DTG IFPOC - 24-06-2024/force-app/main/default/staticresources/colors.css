@@ -1,0 +1,33 @@
+.datatable-orange{
+  color:#000;
+  background-color: #fff;
+/*#CDEAD0;*/
+}
+
+.datatable-aqua{
+  color:#000;
+  background-color: #fff; /*#EDBAC6;*/
+}
+
+.datatable-blue{
+  color:#000;
+  background-color: #fff; /*#91CDED;*/
+}
+
+.datatable-purple{
+  color:#000;
+  background-color: #fff; /*#E8CDEA;*/
+}
+
+.datatable-lightorange{
+  color:#000;
+  background-color: #fff; /*#FCA1A1;*/
+}
+
+.myTable table>thead .slds-cell-fixed.slds-has-button-menu, .myTable table>thead .slds-cell-fixed.slds-has-button-menu:hover{
+  background: antiquewhite;
+}
+
+.myTable table>thead .slds-cell-fixed, .myTable table>thead .slds-cell-fixed:hover{
+  background: antiquewhite;
+}

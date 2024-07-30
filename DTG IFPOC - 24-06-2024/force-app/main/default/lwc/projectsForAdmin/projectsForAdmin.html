@@ -1,0 +1,72 @@
+<template>
+    <template if:true={showSpinner}>
+        <lightning-spinner variant="brand"></lightning-spinner>
+    </template>
+
+    <template if:false={isGoAdminUser}>
+        <p>You do not have sufficient access</p>
+    </template>
+
+    <template if:true={isGoAdminUser}>
+        <article class="slds-card">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__body">
+                        <h2 class="slds-card__header-title">
+                            <span style="color: #476fa7; font-weight: bold; font-size: 35px;">Projects</span>
+                        </h2>
+                    </div>
+                </header>
+            </div>
+            <div class="slds-card__body slds-card__body_inner slds-m-top_large">
+                <span>
+                    <div class="slds-m-top_x-large">
+                        <span style="color: #476fa7; font-weight: bold; font-size: 20px;">All Projects</span>
+                        <div class="slds-grid slds-gutters slds-m-top_large slds-m-bottom_large">
+                            <div class="slds-m-left_medium">
+                                <span>
+                                    <lightning-input name="allProjectSearch" variant="label-hidden" type="text"
+                                        value={allProjectSearchValue} placeholder="Search"
+                                        onchange={handleProjectChange}></lightning-input>
+                                </span>
+                            </div>
+                            <div class="slds-m-left_medium">
+                                <span>
+                                    <lightning-combobox name="allProjectFundingYear" label="Funding Year"
+                                        value={allProjectFundingYearValue} placeholder="Funding Year (All)"
+                                        options={allProjectFundingYearOptions} onchange={handleProjectChange}
+                                        variant="label-hidden"></lightning-combobox>
+                                </span>
+                            </div>
+                            <div class="slds-m-left_medium">
+                                <span>
+                                    <lightning-combobox name="allProjectPhase" label="Phase"
+                                        value={allProjectPhaseValue} placeholder="Phase"
+                                        options={allProjectPhaseOptions} onchange={handleProjectChange}
+                                        variant="label-hidden"></lightning-combobox>
+                                </span>
+                            </div>
+                            <div class="slds-m-left_medium">
+                                <span>
+                                    <lightning-combobox name="allProjectStatus" label="Status"
+                                        value={allProjectStatusValue} placeholder="Status"
+                                        options={allProjectStatusOptions} onchange={handleProjectChange}
+                                        variant="label-hidden"></lightning-combobox>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="myTable">
+                            <lightning-datatable key-field="Name" data={filteredAllProjectData}
+                                columns={allProjectColumns} onrowaction={handleRowAction} hide-checkbox-column>
+                            </lightning-datatable>
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <footer class="slds-card__footer">
+
+            </footer>
+        </article>
+    </template>
+
+</template>
